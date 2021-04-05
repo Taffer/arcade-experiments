@@ -8,7 +8,7 @@ I want to see if there's a way to do it without duplicating and modifying the
 sprite. I'm thinking that ancient platforms (think Commodore C=64 or Apple ][)
 wouldn't have the memory to waste for this sort of thing.
 
-The goal is to do this with one draw call, rather than two.
+The goal is to do this with one draw call, by adjusting the texture.
 
 ![Experiment 1 - Scrolling Texture](experiment-1.png)
 
