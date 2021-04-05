@@ -39,7 +39,6 @@ class Experiment(arcade.Window):
         # self.robot2 = arcade.Sprite('resources/character_robot_jump-2y.png')
         self.robot2 = arcade.Sprite()
         for i in range(self.robot1.height - 1):
-            print(f'(0, {i}) {self.robot1.width} x {self.robot1.height}')
             texture = arcade.load_texture('resources/character_robot_jump-2y.png', 0, i, self.robot1.width, self.robot1.height)
             self.robot2.append_texture(texture)
             self.robot2_textures = self.robot2_textures + 1
