@@ -23,6 +23,9 @@ class Experiment(arcade.Window):
         self.robot1 = None
         self.robot2 = None
 
+        self.robot2_idx = 0
+        self.robot2_textures = 0
+
     def setup(self):
         ''' Load resources and initialize.
         '''
@@ -33,7 +36,14 @@ class Experiment(arcade.Window):
         self.robot1.left = 100
         self.sprites.append(self.robot1)
 
-        self.robot2 = arcade.Sprite('resources/character_robot_jump-2y.png')
+        # self.robot2 = arcade.Sprite('resources/character_robot_jump-2y.png')
+        self.robot2 = arcade.Sprite()
+        for i in range(self.robot1.height - 1):
+            print(f'(0, {i}) {self.robot1.width} x {self.robot1.height}')
+            texture = arcade.load_texture('resources/character_robot_jump-2y.png', 0, i, self.robot1.width, self.robot1.height)
+            self.robot2.append_texture(texture)
+            self.robot2_textures = self.robot2_textures + 1
+        self.robot2.set_texture(self.robot2_idx)
         self.robot2.top = SCREEN_HEIGHT - 100
         self.robot2.left = 200
         self.sprites.append(self.robot2)
@@ -45,8 +55,8 @@ class Experiment(arcade.Window):
         No idea how to do this in Arcade without defining a new sprite for each
         step of the animation.
         '''
-        self.robot2.radians = self.robot2.radians + 1/60
-        print(f'Scroll: {dt}')
+        self.robot2_idx = (self.robot2_idx + 1) % self.robot2_textures
+        self.robot2.set_texture(self.robot2_idx)
 
     def on_draw(self):
         ''' Draw the screen.
